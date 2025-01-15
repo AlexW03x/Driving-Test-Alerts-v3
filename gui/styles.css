@@ -123,3 +123,11 @@ body{
     background: #7cd94e;
     border-radius: 100vh;
   }
+
+option{
+  background-color: transparent;
+}
+
+.calendar::-webkit-calendar-picker-indicator{
+  filter:invert(1);
+}
