@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css"/>
+        <link rel="icon" href="assets/favicon.ico" type="image/x-icon"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+
+        <title>AlexW03x Driving Test Alerts</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            clifford: '#da373d',
+                        }
+                    }
+                }
+            }
+        </script>
+        <script type="text/tailwindcss">
+            @layer utilities{
+                .content-auto{
+                    content-visibility: auto;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="bg-[#141313] w-screen min-w-[400px] h-screen min-h-max overflow-x-hidden newScroll">
+            <div class="w-[100%] h-[100px] flex flex-col justify-center items-center">
+                <p class="poppins-regular font-bold text-white lg:text-2xl 2xl:text-3xl text-xl">Welcome To The Driving Test Scanner</p>
+                <p class="poppins-light font-[400] text-white lg:text-lg 2xl:text-xl text-sm">A script developed by <span class="text-lime-200 cursor-pointer hover:text-lime-400 transition-all ease-in duration-150">@AlexW03x</span></p>
+            </div>
+            <div class="w-[100%] h-[50px] flex flex-row bg-[#1c1b1b]">
+                <div id="tab1" onclick="changeTabs(1)" class="lg:w-[250px] sm:w-[150px] w-[120px] h-[100%] flex flex-col justify-center items-center hover:bg-[#5c9c40] transition-all ease-in duration-150 cursor-pointer">
+                    <p class="poppins-light font-[550] text-white lg:text-md 2xl:text-lg text-sm">Home</p>
+                </div>
+                <div id="tab2" onclick="changeTabs(2)" class="lg:w-[250px] sm:w-[150px] w-[120px] h-[100%] flex flex-col justify-center items-center hover:bg-[#5c9c40] transition-all ease-in duration-150 cursor-pointer">
+                    <p class="poppins-light font-[550] text-white lg:text-md 2xl:text-lg text-sm">Script</p>
+                </div>
+                <div id="tab3" onclick="changeTabs(3)" class="lg:w-[250px] sm:w-[150px] w-[120px] h-[100%] flex flex-col justify-center items-center hover:bg-[#5c9c40] transition-all ease-in duration-150 cursor-pointer">
+                    <p class="poppins-light font-[550] text-white lg:text-md 2xl:text-lg text-sm">Settings</p>
+                </div>
+            </div>
+
+            <div id="tab1_panel" class="w-[100%] h-max flex lg:flex-row flex-col overflow-hidden">
+                <div class="lg:w-[50%] w-[100%] lg:h-[100%] h-max lg:pb-0 pb-[20px] flex flex-col">
+                    <img src="assets/Logo_transparent.png" class="mx-auto w-[128px] h-[128px] mt-[40px]">
+                    <p class="poppins-light font-[400] text-white lg:text-md 2xl:text-lg text-sm mt-[10px] text-center mx-[10%]">Application Version: 3.0<br/><span class="text-lime-200">Whats New?</span><br/><br/>
+                    <span class="text-red-200">- Removed Outdated Captcha Bypasses<br/>- Removed Old UI<br/>- Removed Script Versions<br/></span><br/><span class="text-green-200">+ Added UI Tabs<br/>+ Implemented New Scan System<br/>+ Added Settings Save and Load<br/>+ Added Better Scheduling<br/>+ Changed Script For Efficiency</span></p>
+
+                </div>
+                <div class="lg:w-[50%] w-[100%] lg:h-[100%] h-max lg:pb-0 pb-[20px] flex flex-col">
+                    <p class="poppins-regular font-bold lg:text-lg 2xl:text-xl text-md mt-[30px] text-center mx-4 text-lime-200">Instructions:</p>
+                    <p class="poppins-light font-[400] text-white lg:text-md 2xl:text-lg text-sm mt-[10px] text-left mx-4">1. If you haven't already before launching the script, you must insert your required information into the script settings tab<br/><br/>
+                    2. Then click on save to update the information across the application<br/><br/><span class="text-blue-200">Note:</span> This step won't be required once a save is detected<br/><br/>3. Once done, your able to use the scripts tab and begin gathering driving test availability<br/><br/>4. If you would like to be one of the first to identify cancellations, enable auto mode with an appropriate time interval
+                <br/><br/>5. If you would like this to run automatically without opening the app, click on set scheduling with a time slot in mind</p>
+                </div>
+            </div>
+            
+            <div id="tab2_panel" class="overflow-hidden flex lg:flex-row flex-col">
+
+            </div>
+
+            <div id="tab3_panel" class="overflow-hidden flex lg:flex-row flex-col">
+
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script src="script.js"></script>
+</html>
