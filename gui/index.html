@@ -58,7 +58,7 @@
 
                 </div>
                 <div class="lg:w-[50%] w-[100%] lg:h-[100%] h-max lg:pb-0 pb-[20px] flex flex-col">
-                    <p class="poppins-regular font-bold lg:text-lg 2xl:text-xl text-md mt-[30px] text-center mx-4 text-lime-200">Instructions:</p>
+                    <p class="poppins-regular font-bold lg:text-lg 2xl:text-xl text-md mt-[30px] text-center mx-4 text-lime-200 mt-[70px]">Instructions:</p>
                     <p class="poppins-light font-[400] text-white lg:text-md 2xl:text-lg text-sm mt-[10px] text-left mx-4">1. If you haven't already before launching the script, you must insert your required information into the script settings tab<br/><br/>
                     2. Then click on save to update the information across the application<br/><br/><span class="text-blue-200">Note:</span> This step won't be required once a save is detected<br/><br/>3. Once done, your able to use the scripts tab and begin gathering driving test availability<br/><br/>4. If you would like to be one of the first to identify cancellations, enable auto mode with an appropriate time interval
                 <br/><br/>5. If you would like this to run automatically without opening the app, click on set scheduling with a time slot in mind</p>
@@ -72,32 +72,34 @@
             <div id="tab3_panel" class="overflow-hidden flex lg:flex-row flex-col w-[0%] h-0">
                 <div class="lg:w-[50%] lg:h-[100%] w-[100%] h-max lg:pb-0 pb-[20px] flex flex-col">
                     <p class="poppins-regular font-bold lg:text-lg 2xl:text-xl text-md mt-[30px] text-center mx-4 text-lime-200">Script Inputs:</p>
+                    <p id="error" class="poppins-light font-[400] lg:text-md 2xl:text-lg text-sm mt-[5px] text-center mx-4 text-red-300 hidden"></p>
+                    <p id="success" class="poppins-light font-[400] lg:text-md 2xl:text-lg text-sm mt-[5px] text-center mx-4 text-lime-300 hidden"></p>
                     <div class="flex flex-row w-[100%] h-max pb-[10px] justify-center mt-[10px]">
                         <p class="poppins-light font-[400] text-white lg:text-md 2xl:text-lg text-sm mt-[15px] text-left mx-4">Driving ID:</p>
-                        <input type="text" placeholder="License ID here" class="rounded-md border-white border-[1px] poppins-light font-[400] lg:text-md 2xl:text-lg text-sm pl-2 bg-transparent mt-[8px] text-white h-[30px]">
+                        <input id="license" onchange="updatevar('license')" type="text" placeholder="License ID here" class="rounded-md border-white border-[1px] poppins-light font-[400] lg:text-md 2xl:text-lg text-sm pl-2 bg-transparent mt-[8px] text-white h-[30px]">
                     </div>
                     <div class="flex flex-row w-[100%] h-max pb-[10px] justify-center mt-[10px]">
                         <p class="poppins-light font-[400] text-white lg:text-md 2xl:text-lg text-sm mt-[15px] text-left mx-4">Driving Postcode:</p>
-                        <input type="text" placeholder="Postcode here" class="rounded-md border-white border-[1px] poppins-light font-[400] lg:text-md 2xl:text-lg text-sm pl-2 bg-transparent mt-[8px] text-white h-[30px]">
+                        <input id="postcode" onchange="updatevar('postcode')" type="text" placeholder="Postcode here" class="rounded-md border-white border-[1px] poppins-light font-[400] lg:text-md 2xl:text-lg text-sm pl-2 bg-transparent mt-[8px] text-white h-[30px]">
                     </div>
                     <div class="flex flex-row w-[100%] h-max pb-[10px] justify-center mt-[10px]">
                         <p class="poppins-light font-[400] text-white lg:text-md 2xl:text-lg text-sm mt-[15px] text-left mx-4">Email for Alerts:</p>
-                        <input type="text" placeholder="Email here" class="rounded-md border-white border-[1px] poppins-light font-[400] lg:text-md 2xl:text-lg text-sm pl-2 bg-transparent mt-[8px] text-white h-[30px]">
+                        <input id="email" onchange="updatevar('email')" type="text" placeholder="Email here" class="rounded-md border-white border-[1px] poppins-light font-[400] lg:text-md 2xl:text-lg text-sm pl-2 bg-transparent mt-[8px] text-white h-[30px]">
                     </div>
                     <div class="flex flex-row w-[100%] h-max pb-[10px] justify-center mt-[10px]">
                         <p class="poppins-light font-[400] text-white lg:text-md 2xl:text-lg text-sm mt-[15px] text-left mx-4">Enable Alerts:</p>
-                        <select placeholder="Email here" class="rounded-md border-white border-[1px] poppins-light font-[400] lg:text-md 2xl:text-lg text-sm pl-2 bg-transparent mt-[8px] text-white h-[30px] w-[180px]">
+                        <select id="alerts" onchange="updatevar('alerts')" placeholder="Email here" class="rounded-md border-white border-[1px] poppins-light font-[400] lg:text-md 2xl:text-lg text-sm pl-2 bg-transparent mt-[8px] text-white h-[30px] w-[180px]">
                             <option class="bg-transparent text-black">True</option>
                             <option selected="true" class="bg-transparent text-black">False</option>
                         </select>
                     </div>
                     <div class="flex flex-row w-[100%] h-max pb-[10px] justify-center mt-[10px]">
                         <p class="poppins-light font-[400] text-white lg:text-md 2xl:text-lg text-sm mt-[15px] text-left mx-4">Date For Test:</p>
-                        <input type="date" placeholder="" class="rounded-md border-white border-[1px] poppins-light font-[400] lg:text-md 2xl:text-lg text-sm pl-2 bg-transparent mt-[8px] text-white h-[30px] calendar">
+                        <input id="date" onchange="updatevar('date')" type="date" placeholder="" class="rounded-md border-white border-[1px] poppins-light font-[400] lg:text-md 2xl:text-lg text-sm pl-2 bg-transparent mt-[8px] text-white h-[30px] calendar">
                     </div>
 
-                    <button class="mt-[20px] mx-auto rounded-md bg-white w-[180px] h-[35px] text-black poppins-regular font-[400] text-center hover:bg-lime-400 transition-all ease-in duration-150 cursor-pointer">Save</button>
-                    <button class="mt-[20px] mx-auto rounded-md bg-white w-[180px] h-[35px] text-black poppins-regular font-[400] text-center hover:bg-lime-400 transition-all ease-in duration-150 cursor-pointer">Load</button>
+                    <button onclick="saveVar()" class="mt-[20px] mx-auto rounded-md bg-white w-[180px] h-[35px] text-black poppins-regular font-[400] text-center hover:bg-lime-400 transition-all ease-in duration-150 cursor-pointer">Save</button>
+                    <button onclick="loadSave()" class="mt-[20px] mx-auto rounded-md bg-white w-[180px] h-[35px] text-black poppins-regular font-[400] text-center hover:bg-lime-400 transition-all ease-in duration-150 cursor-pointer">Load</button>
                 </div>
 
                 <div class="lg:w-[50%] lg:h-[100%] w-[100%] h-max lg:pb-0 pb-[20px] flex flex-col">
@@ -113,12 +115,13 @@
                         </select>
                     </div>
 
-                    <p class="poppins-regular font-bold lg:text-lg 2xl:text-xl text-md mt-[30px] text-center mx-4 text-lime-200">API Key:</p>
+                    <p class="poppins-regular font-bold lg:text-lg 2xl:text-xl text-md mt-[20px] text-center mx-4 text-lime-200">API Key:</p>
                     <p class="poppins-light font-[400] text-white lg:text-md 2xl:text-lg text-sm mt-[10px] text-center mx-[10%]">You will need a API Key in order to run the script it can be acquired here: <span class="text-lime-200 hover:text-lime-400 cursor-pointer">ZenRows</span></p>
                     <div class="flex flex-row w-[100%] h-max pb-[10px] justify-center mt-[10px]">
                         <p class="poppins-light font-[400] text-white lg:text-md 2xl:text-lg text-sm mt-[15px] text-left mx-4">API Key:</p>
                         <input type="text" placeholder="Paste key here" class="rounded-md border-white border-[1px] poppins-light font-[400] lg:text-md 2xl:text-lg text-sm pl-2 bg-transparent mt-[8px] text-white h-[30px]">
                     </div>
+                    <button class="mt-[10px] mx-auto rounded-md bg-white w-[180px] h-[35px] text-black poppins-regular font-[400] text-center hover:bg-lime-400 transition-all ease-in duration-150 cursor-pointer">Save</button>
                 </div>
             </div>
         </div>
