@@ -178,3 +178,15 @@ function updateNewSettings(var1, var2, var3, var4, var5){
     document.getElementById("alerts").value = alerts;
     document.getElementById("date").value = date;
 }
+
+let autorun = false;
+function enableAutoRun(){
+    if(autorun == false){
+        document.getElementById("autorunBtn").innerHTML = "✅";
+        autorun = true;
+    }   
+    else{
+        document.getElementById("autorunBtn").innerHTML = "❌";
+        autorun = false;
+    }
+}

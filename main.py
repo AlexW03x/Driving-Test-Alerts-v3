@@ -7,6 +7,16 @@ from tkinter import filedialog
 
 eel.init("gui")
 
+##global variables for holding info##
+global drivingLicense
+global postcode
+global email
+global alerts
+global date
+global apiKey
+global autoRun
+global autoRunCooldown
+
 @eel.expose
 def saveScriptSettings(drivingLicense, postcode, email, alerts, date):
     layout = f"Driving-License: {drivingLicense}\nPostcode: {postcode}\nEmail: {email}\nAlerts: {alerts}\nDate: {date}"
@@ -63,7 +73,8 @@ def loadFromFile(style, filename):
             print(f"File chosen: {filename}")
         else:
             print("No file chosen.")
-            
+        root.destroy()
+    
     loadScriptSettings(style, filename)
             
     
