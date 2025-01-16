@@ -2,9 +2,10 @@ from time import *
 from math import *
 import eel
 import os
+import tkinter as tk
+from tkinter import filedialog
 
 eel.init("gui")
-
 
 @eel.expose
 def saveScriptSettings(drivingLicense, postcode, email, alerts, date):
@@ -19,13 +20,13 @@ def saveScriptSettings(drivingLicense, postcode, email, alerts, date):
         eel.returnSaveUpdate("false")
     
 @eel.expose
-def loadScriptSettings(style):
-    if not os.path.exists("settings.ini"):
+def loadScriptSettings(style, filename):
+    if not os.path.exists(filename):
         print(f"Save file doesn't exist!")
     else:
         values = []
         keys = []
-        with open("settings.ini", "r") as file:
+        with open(filename, "r") as file:
             for items in file:
                 if ":" in items:
                     key, value = items.split(":", 1)
@@ -44,10 +45,27 @@ def loadScriptSettings(style):
             if style == "show":
                 eel.returnLoadSaveUpdate("true")
             eel.updateNewSettings(values[0], values[1], values[2], values[3], values[4])
+            print("Save loaded successfully!")
         else:
             if style == "hidden":
                 eel.returnLoadSaveUpdate("false")
             print("Corrupt/Incorrect save file detected!")
+            
+@eel.expose
+def loadFromFile(style, filename):
+    if filename == "" or filename == None or len(filename) < 1:
+        root = tk.Tk()
+        root.attributes("-topmost", True)
+        root.withdraw()
+        path = filedialog.askopenfilename(title="Select save file", filetypes=(("Save/Config Files", "*.ini"), ("All Files", "*.*")))
+        if path:
+            filename = path
+            print(f"File chosen: {filename}")
+        else:
+            print("No file chosen.")
+            
+    loadScriptSettings(style, filename)
+            
     
 @eel.expose
 def saveAppSettings():

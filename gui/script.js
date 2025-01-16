@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("tab1").classList.add("bg-[#5c9c40]");
 
-    eel.loadScriptSettings("hidden");
+    eel.loadScriptSettings("hidden", "settings.ini");
 })
 
 let tab = 1;
@@ -160,7 +160,7 @@ function loadScriptSave(){
 }
 
 function loadSave(){
-    eel.loadScriptSettings("show");
+    eel.loadFromFile("show", "");
 }
 
 eel.expose(updateNewSettings);
