@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("tab1").classList.add("bg-[#5c9c40]");
 
     eel.loadScriptSettings("hidden", "settings.ini");
+    eel.loadAppSettings()
 })
 
 let tab = 1;
@@ -51,6 +52,7 @@ let postcode = "";
 let email = "";
 let alerts = false;
 let date = "";
+let theme = "";
 
 function updatevar(type){
     if(type == "license"){
@@ -179,6 +181,18 @@ function updateNewSettings(var1, var2, var3, var4, var5){
     document.getElementById("date").value = date;
 }
 
+eel.expose(updateApp);
+function updateApp(var1){
+    theme = var1;
+
+    if(String(theme).toLowerCase() == "light mode"){
+        document.getElementById("theme").value = "Light Mode";
+    }
+    else{
+        document.getElementById("theme").value = "Dark Mode";
+    }
+}
+
 let autorun = false;
 function enableAutoRun(){
     if(autorun == false){
@@ -189,4 +203,51 @@ function enableAutoRun(){
         document.getElementById("autorunBtn").innerHTML = "❌";
         autorun = false;
     }
+}
+
+eel.expose(saveOthers);
+function saveOthers(){
+    let theme = document.getElementById("theme").value;
+
+    eel.saveAppSettings(theme);
+}
+
+eel.expose(saveOthersCheck);
+function saveOthersCheck(passed){
+    if(String(passed) == "true"){
+        document.getElementById("error2").classList.add("hidden");
+        document.getElementById("error2").innerHTML = "";
+        document.getElementById("success2").classList.remove("hidden");
+        document.getElementById("success2").innerHTML = "File saved successfully!";         
+    }
+    else{
+        document.getElementById("error2").classList.remove("hidden");
+        document.getElementById("error2").innerHTML = "Failed to save file!";
+        document.getElementById("success2").classList.add("hidden");
+        document.getElementById("success2").innerHTML = ""; 
+    }
+}
+
+eel.expose(beginScript);
+function beginScript(){
+    if(drivingLicense == "" || postcode == "" || date == "" || email == ""){
+        document.getElementById("script_status").innerHTML = "Incorrect Settings!";
+        document.getElementById("script_status").classList.remove("text-blue-200");
+        document.getElementById("script_status").classList.add("text-red-200");
+    }
+    else{
+        document.getElementById("script_status").innerHTML = "Launching...!";
+        document.getElementById("script_status").classList.remove("text-red-200");
+        document.getElementById("script_status").classList.add("text-blue-200");
+
+        eel.launchScript(drivingLicense, postcode, date);
+    }
+}
+
+eel.expose(updateStatus);
+function updateStatus(statusText, statusColourToRemove, statusColourToAdd){
+    let ss = document.getElementById("script_status");
+    ss.innerHTML = statusText;
+    ss.classList.remove(statusColourToRemove);
+    ss.classList.add(statusColourToAdd);
 }

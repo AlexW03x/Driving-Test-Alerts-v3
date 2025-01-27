@@ -124,6 +124,20 @@ body{
     border-radius: 100vh;
   }
 
+  .freshScroll::-webkit-scrollbar{
+    width: 6px;
+    height: 100%;
+  }
+
+  .freshScroll::-webkit-scrollbar-track{
+    background: #161a14;
+  }
+
+  .freshScroll::-webkit-scrollbar-thumb{
+    background: #9ba098;
+    border-radius: 100vh;
+  }
+
 option{
   background-color: transparent;
 }
