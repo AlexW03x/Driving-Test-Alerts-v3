@@ -228,6 +228,8 @@ function saveOthersCheck(passed){
     }
 }
 
+let scriptLaunch = false;
+
 eel.expose(beginScript);
 function beginScript(){
     if(drivingLicense == "" || postcode == "" || date == "" || email == ""){
@@ -240,8 +242,20 @@ function beginScript(){
         document.getElementById("script_status").classList.remove("text-red-200");
         document.getElementById("script_status").classList.add("text-blue-200");
 
-        eel.launchScript(drivingLicense, postcode, date);
+        if(scriptLaunch == false){
+            eel.launchScript(drivingLicense, postcode, date);
+            scriptLaunch = true;
+        }
+        else{
+            console.log("Script is already running!");
+            eel.printStatement("Script is already running!");
+        }
     }
+}
+
+eel.expose(scriptLaunchChange);
+function scriptLaunchChange(bool){
+    scriptLaunch = bool == "False" ? false : true;
 }
 
 eel.expose(updateStatus);

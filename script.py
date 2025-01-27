@@ -24,20 +24,28 @@ def script(drivingLicense, postcode, drivingDate):
                 bot.cdp.click_link("Start now")
                 bot.wait_for_element_visible("body", timeout=2)
                 bot.sleep(1)
-
                 bot.switch_to_frame("#main-iframe")
                 bot.click("span:contains('Click to verify')")
-                eel.updateStatus("Attempting Puzzle...", "text-red-200", "text-blue-200")
-                
+
                 count = 0
                 while("https://driverpracticaltest.dvsa.gov.uk/application" == str(bot.get_current_url)):
                     count += 1
+                    eel.updateStatus("Attempting Puzzle...", "text-red-200", "text-blue-200")
                     if(count > 5):
                         eel.updateStatus("Puzzle failed, ending script!", "text-blue-200", "text-red-200")
+                        eel.scriptLaunchChange("False")
                         endScript = True
                         break
+                    
+                    sleep(1.5)
             except:
                 eel.updateStatus("Verification Failed!", "text-blue-200", "text-red-200")
+                eel.scriptLaunchChange("False")
+                endScript = True
+            
+            #security check for endScripts - to prevent continuation
+            if(endScript == True):
+                break
             
             #after puzzle is completed
             bot.sleep(1)
@@ -54,7 +62,12 @@ def script(drivingLicense, postcode, drivingDate):
                         sleep(0.5)
             except:
                 eel.updateStatus("Couldn't find test type!", "text-blue-200", "text-red-200")
-                pass
+                eel.scriptLaunchChange("False")
+                endScript = True
+                
+            #security check for endScripts - to prevent continuation
+            if(endScript == True):
+                break
                 
             #part 2 - driving license and number
             bot.wait_for_element_visible("body", timeout=4)
@@ -72,7 +85,12 @@ def script(drivingLicense, postcode, drivingDate):
                         sleep(1)
             except:
                 eel.updateStatus("Couldn't find licence element!", "text-blue-200", "text-red-200")
-                pass
+                eel.scriptLaunchChange("False")
+                endScript = True
+                
+            #security check for endScripts - to prevent continuation
+            if(endScript == True):
+                break
                 
             #part 3 - fill in preferred date
             bot.wait_for_element_visible("body", timeout=4)
@@ -86,7 +104,12 @@ def script(drivingLicense, postcode, drivingDate):
                         sleep(1)
             except:
                 eel.updateStatus("Couldn't enter a date!", "text-blue-200", "text-red-200")
-                pass
+                eel.scriptLaunchChange("False")
+                endScript = True
+                
+            #security check for endScripts - to prevent continuation
+            if(endScript == True):
+                break
             
             #part 4 - post code
             bot.wait_for_element_visible("body", timeout=4)
@@ -100,7 +123,12 @@ def script(drivingLicense, postcode, drivingDate):
                         sleep(1)
             except:
                 eel.updateStatus("Couldn't select test centre!", "text-blue-200", "text-red-200")
-                pass
+                eel.scriptLaunchChange("False")
+                endScript = True
+                
+            #security check for endScripts - to prevent continuation
+            if(endScript == True):
+                break
                 
             #part 5 - grab availabilities
             bot.wait_for_element_visible("body", timeout=4)
@@ -115,23 +143,36 @@ def script(drivingLicense, postcode, drivingDate):
                         bot.click('a[id*="centre-name"]')
             except:
                 eel.updateStatus("No search results!", "text-blue-200", "text-red-200")
-                pass
+                eel.scriptLaunchChange("False")
+                endScript = True
+                
+            #security check for endScripts - to prevent continuation
+            if(endScript == True):
+                break
                 
             #part 6 - timetable
             bot.wait_for_element_visible("body", timeout=2)
             try:
-                eel.updateStatus("Identifying dates...", "text-red-200", "text-blue-200")
-                if(bot.is_element_visible("#slot-picker-form") == True):
-                    timeslots = []
-                    for tests in bot.find_elements('td.BookingCalendar-date--bookable'):
-                        timeslots.append(tests.text)
-                    
-                    sortedTimeSlots = [dates for dates in timeslots if dates and dates.strip()]
-                    eel.updateStatus("Dates identified!", "text-red-200", "text-blue-200")
-                    for i in sortedTimeSlots:
-                        print(i)
+                if("s6" in str(bot.get_current_url())):
+                    eel.updateStatus("Identifying dates...", "text-red-200", "text-blue-200")
+                    if(bot.is_element_visible("#slot-picker-form") == True):
+                        timeslots = []
+                        for tests in bot.find_elements('td.BookingCalendar-date--bookable'):
+                            timeslots.append(tests.text)
+                        
+                        sortedTimeSlots = [dates for dates in timeslots if dates and dates.strip()]
+                        eel.updateStatus("Dates identified!", "text-red-200", "text-blue-200")
+                        for i in sortedTimeSlots:
+                            print(i)
             except:
                 eel.updateStatus("No available dates!", "text-blue-200", "text-red-200")
+                eel.scriptLaunchChange("False")
+                endScript = True
+                
+            #security check for endScripts - to prevent continuation
+            if(endScript == True):
+                break
             
             sleep(5000)
             endScript = True
+            eel.scriptLaunchChange("False")

@@ -129,5 +129,8 @@ def loadAppSettings():
 def launchScript(drivingLicense, postcode, date):
     script(drivingLicense, postcode, date)
     
+@eel.expose
+def printStatement(statement):
+    print(statement)
 
 eel.start("index.html", size=(1080,720))
