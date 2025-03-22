@@ -1,4 +1,9 @@
 # Driving-Test-Alerts-v3
+
+<div align="center" style="background-color: #ffcccb; padding: 10px; border-radius: 5px; margin: 20px 0;">
+  <strong>⚠️ Incomplete Project: This project unfortunately isn't fully complete due to shifted focus onto studies and other higher priority projects. Completion of this project may or may not happen.</strong>
+</div>
+
 ## What is it?
 > Driving Test Alerts V3 is a project developed by me to help with the problem of identifying driving test availability. We don't have the time to sit and refresh the government website to find test slots and whenever cancellations occur, we will not know unless we already have an existing test booked to utilise the other services for test modifications. However, my project works to remove the need to sit and refresh and removes the need to have an existing test to identify possible tests and this project helped me get a driving test sooner too.
 
