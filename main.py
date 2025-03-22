@@ -126,8 +126,8 @@ def loadAppSettings():
             print("App data save failed to load!")
         
 @eel.expose
-def launchScript(drivingLicense, postcode, date):
-    script(drivingLicense, postcode, date)
+def launchScript(drivingLicense, postcode, date, autoRun, autoCooldown):
+    script(drivingLicense, postcode, date, autoRun, autoCooldown)
     
 @eel.expose
 def printStatement(statement):

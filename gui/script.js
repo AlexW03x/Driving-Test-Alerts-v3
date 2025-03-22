@@ -53,6 +53,7 @@ let email = "";
 let alerts = false;
 let date = "";
 let theme = "";
+let time = 5;
 
 function updatevar(type){
     if(type == "license"){
@@ -79,6 +80,10 @@ function updatevar(type){
     if(type == "date"){
         date = document.getElementById("date").value;
         console.log(date);
+    }
+    if(type == "time"){
+        time = document.getElementById("cooldownTimer").value;
+        console.log(time);
     }
 }
 
@@ -243,7 +248,7 @@ function beginScript(){
         document.getElementById("script_status").classList.add("text-blue-200");
 
         if(scriptLaunch == false){
-            eel.launchScript(drivingLicense, postcode, date);
+            eel.launchScript(drivingLicense, postcode, date, autorun, time);
             scriptLaunch = true;
         }
         else{

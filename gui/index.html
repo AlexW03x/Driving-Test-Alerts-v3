@@ -78,7 +78,7 @@
                         </div>
                         <div class="flex flex-row sm:mt-0 mt-[20px]">
                             <p class="poppins-light font-bold text-white lg:text-md 2xl:text-lg text-sm ml-[40px] mt-[10px]">Cooldown:</p>    
-                            <input id="cooldownTimer" type="number" min="2" max="1440" value="5" class="rounded-md h-[40px] poppins-light font-[400] text-white bg-transparent border-[1px] border-solid border-lime-200 pl-[10px] ml-[10px]">
+                            <input onchange="updatevar('time')" id="cooldownTimer" type="number" min="2" max="1440" value="5" class="rounded-md h-[40px] poppins-light font-[400] text-white bg-transparent border-[1px] border-solid border-lime-200 pl-[10px] ml-[10px]">
                             <p class="poppins-light font-bold text-white lg:text-md 2xl:text-lg text-sm ml-[10px] mt-[10px]">Minutes</p> 
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                         <button id="scheduleBtn" class="rounded-md w-[150px] h-[40px] border-solid border-[1px] border-lime-200 bg-transparent hover:bg-lime-200 transition-all ease-in duration-150 poppins-light font-[450] text-white lg:text-md 2xl:text-lg text-sm hover:text-black sm:ml-0 ml-[40px]">Schedule Script</button>
                         <div class="flex flex-row sm:mt-0 mt-[20px]">
                             <p class="poppins-light font-bold text-white lg:text-md 2xl:text-lg text-sm ml-[40px] mt-[10px]">Time:</p>    
-                            <input id="cooldownTimer" type="text" placeholder="14:00" class="rounded-md w-[150px] h-[40px] poppins-light font-[400] text-white bg-transparent border-[1px] border-solid border-lime-200 pl-[10px] ml-[10px]">
+                            <input id="scheduleTimer" type="text" placeholder="14:00" class="rounded-md w-[150px] h-[40px] poppins-light font-[400] text-white bg-transparent border-[1px] border-solid border-lime-200 pl-[10px] ml-[10px]">
                         </div>
                     </div>
                     <p class="poppins-light text-white lg:text-md 2xl:text-lg text-sm font-[400] text-center mx-4 mt-[25px]"><span class="text-blue-200">Note:</span> Auto-run isn't supported for scheduled scripts<br/>Time input only required for scheduling only!<br/>As the script is running, the status will be updated and information gathered will be available below!</p>

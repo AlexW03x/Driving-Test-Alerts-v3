@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from time import *
 import eel
 
-def script(drivingLicense, postcode, drivingDate):
+def script(drivingLicense, postcode, drivingDate, autoRun, autoCooldown):
     endScript = False
     while(endScript == False):
         with SB(uc=True, locale_code="en", ad_block=True) as bot:
@@ -176,3 +176,6 @@ def script(drivingLicense, postcode, drivingDate):
             sleep(5000)
             endScript = True
             eel.scriptLaunchChange("False")
+            
+    if autoRun == True:
+        pass
